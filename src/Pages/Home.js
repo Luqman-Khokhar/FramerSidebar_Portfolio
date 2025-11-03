@@ -1,8 +1,20 @@
 import MotionHoc from "./MotionHoc";
 import { motion } from "framer-motion";
 import { ChevronUp, Sparkles } from "lucide-react";
+import ProductionModal from "../components/productionModal";
+import { useEffect, useState } from "react";
 
 const HomeComponent = () => {
+  const [showModal, setShowModal] = useState(false); 
+
+  useEffect(() => {
+    const hasSeenModal = sessionStorage.getItem("seenProductionModal");
+    if (!hasSeenModal) {
+      setShowModal(true);
+      sessionStorage.setItem("seenProductionModal", "true");
+    }
+  }, []);
+
   return (
     <section className="relative min-h-screen flex flex-col justify-between py-10 bg-transparent overflow-hidden">
       {/* Floating glow particles */}
@@ -16,9 +28,10 @@ const HomeComponent = () => {
         animate={{ y: [0, 15, 0], opacity: [0.3, 0.7, 0.3], scale: [1, 1.3, 1] }}
         transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 1 }}
       />
-
+            <ProductionModal isOpen={showModal} onClose={() => setShowModal(false)} />
       {/* Center Content */}
       <div className="flex flex-col items-center justify-center text-center px-6 mt-10">
+
         {/* Name */}
         <motion.h1
           initial={{ opacity: 0, scale: 0.9 }}
