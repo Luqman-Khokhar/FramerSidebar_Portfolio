@@ -10,7 +10,7 @@ import Documents from "../assets/draft.svg";
 import PowerOff from "../assets/power-off-solid.svg";
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
-
+import profileImage from "../assets/about-removebg.png"
 const Container = styled.div`
   position: fixed;
 
@@ -278,11 +278,12 @@ const Sidebar = () => {
           </Item>
         </SlickBar>
 
-        <Profile clicked={profileClick}>
+        {/* <Profile clicked={profileClick}>
           <img
             onClick={() => handleProfileClick()}
-            src="https://picsum.photos/200"
+            src={profileImage}
             alt="Profile"
+            style={{width:40, height:40, borderRadius:20}}
           />
           <Details clicked={profileClick}>
             <Name>
@@ -294,7 +295,7 @@ const Sidebar = () => {
               <img src={PowerOff} alt="logout" />
             </Logout>
           </Details>
-        </Profile>
+        </Profile> */}
       </SidebarContainer>
     </Container>
   );
